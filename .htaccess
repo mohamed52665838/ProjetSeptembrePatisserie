@@ -1,0 +1,11 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Si l'URL se termine par un "/" (donc un dossier) et qu'il n'y a pas d'index
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteCond %{REQUEST_FILENAME}/index.php !-f
+  RewriteRule ^ - [F,L]
+</IfModule>
+
+# Désactiver l'indexation (au cas où)
+Options -Indexes
